@@ -41,6 +41,7 @@ class Info extends React.Component {
             <li>Flights</li>
             <li>Vehicles</li>
             <li>Fuel Combustion</li>
+            <li>Shipping</li>
           </ul>
         </p>
       </div>
