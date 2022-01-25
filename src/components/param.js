@@ -1,0 +1,140 @@
+/* ----- Params for Electricity ----- */
+// const geoCoverageAmericas = {
+//   'United States': 'us',
+//   Canada: 'ca',
+// };
+// const geoCoverageAmericasCountries = Object.keys(geoCoverageAmericas);
+// const geoCoverageAmericasCodes = Object.values(geoCoverageAmericas);
+const stateCodesUS = {
+  Alabama: 'al',
+  Alaska: 'ak',
+  Arizona: 'az',
+  Arkansas: 'ar',
+  California: 'ca',
+  Colorado: 'co',
+  Connecticut: 'ct',
+  Delaware: 'de',
+  Florida: 'fl',
+  Georgia: 'ga',
+  Hawaii: 'hi',
+  Idaho: 'id',
+  Illinois: 'il',
+  Indiana: 'in',
+  Iowa: 'ia',
+  Kansas: 'ks',
+  Kentucky: 'ky',
+  Louisiana: 'la',
+  Maine: 'me',
+  Maryland: 'md',
+  Massachusetts: 'ma',
+  Michigan: 'mi',
+  Minnesota: 'mn',
+  Mississippi: 'ms',
+  Missouri: 'mo',
+  Montana: 'mt',
+  Nebraska: 'ne',
+  Nevada: 'nv',
+  'New Hampshire': 'nh',
+  'New Jersey': 'nj',
+  'New Mexico': 'nm',
+  'New York': 'ny',
+  'North Carolina': 'nc',
+  'North Dakota': 'nd',
+  Ohio: 'oh',
+  Oklahoma: 'ok',
+  Oregon: 'or',
+  Pennsylvania: 'pa',
+  'Rhode Island': 'ri',
+  'South Carolina': 'sc',
+  'South Dakota': 'sd',
+  Tennessee: 'tn',
+  Texas: 'tx',
+  Utah: 'ut',
+  Vermont: 'vt',
+  Virginia: 'va',
+  Washington: 'wa',
+  'West Virginia': 'wv',
+  Wisconsin: 'wi',
+  Wyoming: 'wy',
+  'American Samoa': 'as',
+  Guam: 'gu',
+  'Puerto Rico': 'pr',
+  'US Virgin Islands': 'vi',
+  'District of Columbia': 'dc',
+};
+const stateCodesUSNames = Object.keys(stateCodesUS);
+const stateCodesUSCodes = Object.values(stateCodesUS);
+const provinceCodesCanada = {
+  Alberta: 'ab',
+  'British Columbia': 'bc',
+  Manitoba: 'mb',
+  'New Brunswick': 'nb',
+  'Newfoundland and Labrador': 'nl',
+  'Nova Scotia': 'ns',
+  Ontario: 'on',
+  'Prince Edward Island': 'pe',
+  Quebec: 'qc',
+  Saskatchewan: 'sk',
+  'Northwest Territories': 'nt',
+  Nunavut: 'nu',
+  Yukon: 'yt',
+};
+const provinceCodesCanadaNames = Object.keys(provinceCodesCanada);
+const provinceCodesCanadaCodes = Object.values(provinceCodesCanada);
+
+const geoCoverageEurope = {
+  Austria: 'at',
+  Belgium: 'be',
+  Bulgaria: 'bg',
+  Croatia: 'hr',
+  'Czech Republic': 'cz',
+  Denmark: 'dk',
+  Estonia: 'ee',
+  Finland: 'fi',
+  France: 'fr',
+  Germany: 'de',
+  Ireland: 'ie',
+  Italy: 'it',
+  Lithuania: 'lt',
+  Netherlands: 'nl',
+  Poland: 'pl',
+  Portugal: 'pt',
+  Spain: 'es',
+  Sweden: 'se',
+  'United Kingdom': 'gb',
+};
+const geoCoverageEuropeCountries = Object.keys(geoCoverageEurope);
+const geoCoverageEuropeCodes = Object.values(geoCoverageEurope);
+
+/* ----- Params for Fuel Combustion ----- */
+const fuelSources = {
+  'Bituminous Coal': ['bit', ['short_ton', 'btu']],
+  'Home Heating and Diesel Fuel': ['dfo', ['gallon', 'btu']],
+  'Jet Fuel': ['jf', ['gallon', 'btu']],
+  Kerosene: ['ker', ['gallon', 'btu']],
+  'Lignite Coal': ['lig', ['short_ton', 'btu']],
+  'Municipal Solid Waste': ['msw', ['short_ton', 'btu']],
+  'Natural Gas': ['ng', ['thousand_cubic_feet', 'btu']],
+  'Petroleum Coke': ['pc', ['gallon', 'btu']],
+  'Propane Gas': ['pg', ['gallon', 'btu']],
+  'Residual Fuel Oil': ['rfo', ['gallon', 'btu']],
+  'Subbituminous Coal': ['sub', ['short_ton', 'btu']],
+  'Tire-Derived Fuel': ['tdf', ['short_ton', 'btu']],
+  'Waste Oil': ['wo', ['barrel', 'btu']],
+};
+const fuelSourcesNames = Object.keys(fuelSources);
+
+/* ----- Export of params ----- */
+module.exports = {
+  geoCoverageEurope,
+  geoCoverageEuropeCodes,
+  geoCoverageEuropeCountries,
+  fuelSources,
+  fuelSourcesNames,
+  stateCodesUS,
+  stateCodesUSCodes,
+  stateCodesUSNames,
+  provinceCodesCanada,
+  provinceCodesCanadaCodes,
+  provinceCodesCanadaNames,
+};

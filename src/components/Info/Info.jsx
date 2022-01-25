@@ -21,10 +21,11 @@ class Info extends React.Component {
         <h3>Introduction</h3>
         <p>
           Our goal with this project is simply to raise awareness about the environmental impact
-          of a few common emitting activities. The information provided are simply estimates
-          performed using methodologies provided by the&nbsp;
+          of a few common emitting activities. The information provided is simply CO
+          <sub>2</sub>
+          e emissions estimates evaluated using methodologies provided by the&nbsp;
           <strong><a href={CARBON_INTERFACE_HOME}>Carbon Interface API</a></strong>
-          . (To view the assumptions and other factors leveraged to compute these estimates,
+          . (To get a better understanding of how these estimates were computed,
           please refer to this&nbsp;
           <span><a href={CARBON_INTERFACE_METHOD}>methodology document</a></span>
           .)
