@@ -50,7 +50,6 @@ class App extends React.Component {
       distance_value: url.distanceValue,
       transport_method: url.transportMethod,
     };
-    console.log(body);
   }
 
   render() {
