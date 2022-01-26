@@ -67,6 +67,8 @@ class Electricity extends React.Component {
 
     return (
       <div id="electricity">
+        <p id="section-title">Electricity</p>
+
         <label htmlFor="electricity-value">
           Value
           <sup className="reqd-indicator">*</sup>
@@ -94,6 +96,7 @@ class Electricity extends React.Component {
             id="electricity-continent"
             value={continent}
             onChange={this.onContinentSelect}
+            required
           >
             <option value="" disabled>Choose a continent</option>
             <option value="north-america">North America</option>
@@ -112,6 +115,7 @@ class Electricity extends React.Component {
                   id="electricity-country"
                   value={country}
                   onChange={this.onCountrySelect}
+                  required
                 >
                   <option value="" disabled>Choose a country</option>
                   <option value="us">USA</option>
@@ -123,6 +127,7 @@ class Electricity extends React.Component {
                   id="electricity-country"
                   value={country}
                   onChange={this.onCountrySelect}
+                  required
                 >
                   <option value="" disabled>Choose a country</option>
                   {
@@ -146,13 +151,6 @@ class Electricity extends React.Component {
         {/* <label htmlFor="electricity-state">
           State/Province */}
         {
-          // continent === 'europe' &&
-          // (
-          //   <select id="electricity-state">
-          //     <option value="" disabled>Choose a state</option>
-          //   </select>
-          // )
-
           continent === 'north-america'
           && (
             <label htmlFor="electricity-state">
@@ -200,9 +198,11 @@ class Electricity extends React.Component {
           )
         }
 
-        <button type="submit" className="electricity-button" onClick={this.onComputeClick}>
-          Compute Estimate
-        </button>
+        <div className="btn electricity-button">
+          <button type="submit" onClick={this.onComputeClick}>
+            Compute Estimate
+          </button>
+        </div>
       </div>
     );
   }
