@@ -3,6 +3,7 @@ import React from 'react';
 import Info from './components/Info/Info.jsx';
 import Electricity from './components/Electricity/Electricity.jsx';
 import FuelCombustion from './components/FuelCombustion/FuelCombustion.jsx';
+import Shipping from './components/Shipping/Shipping.jsx';
 import { CARBON_INTERFACE_API_KEY } from '../config.js';
 
 const headers = {
@@ -18,6 +19,7 @@ class App extends React.Component {
     };
     this.getElectricityEstimate = this.getElectricityEstimate.bind(this);
     this.getFuelSourceEstimate = this.getFuelSourceEstimate.bind(this);
+    this.getShippingEstimate = this.getShippingEstimate.bind(this);
   }
 
   getElectricityEstimate(url) {
@@ -39,12 +41,25 @@ class App extends React.Component {
     };
   }
 
+  getShippingEstimate(url) {
+    const body = {
+      type: 'shipping',
+      weight_unit: url.weightUnit,
+      weight_value: url.weightValue,
+      distance_unit: url.distanceUnit,
+      distance_value: url.distanceValue,
+      transport_method: url.transportMethod,
+    };
+    console.log(body);
+  }
+
   render() {
     return (
       <div>
         <Info />
         <Electricity electricityEstimate={this.getElectricityEstimate} />
         <FuelCombustion fuelSourceEstimate={this.getFuelSourceEstimate} />
+        <Shipping shippingEstimate={this.getShippingEstimate} />
       </div>
     );
   }
