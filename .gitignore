@@ -108,3 +108,4 @@ config.js
 .eslintrc.json
 package-lock.json
 schema.sql
+bundle.js

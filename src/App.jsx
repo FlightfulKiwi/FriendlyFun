@@ -4,6 +4,7 @@ import Info from './components/Info/Info.jsx';
 import Electricity from './components/Electricity/Electricity.jsx';
 import FuelCombustion from './components/FuelCombustion/FuelCombustion.jsx';
 import Shipping from './components/Shipping/Shipping.jsx';
+import Flight from './components/Flight/Flight.jsx';
 import { CARBON_INTERFACE_API_KEY } from '../config.js';
 
 const headers = {
@@ -20,6 +21,7 @@ class App extends React.Component {
     this.getElectricityEstimate = this.getElectricityEstimate.bind(this);
     this.getFuelSourceEstimate = this.getFuelSourceEstimate.bind(this);
     this.getShippingEstimate = this.getShippingEstimate.bind(this);
+    this.getFlightEstimate = this.getFlightEstimate.bind(this);
   }
 
   getElectricityEstimate(url) {
@@ -52,6 +54,10 @@ class App extends React.Component {
     };
   }
 
+  getFlightEstimate(url) {
+    console.log(url);
+  }
+
   render() {
     return (
       <div>
@@ -59,6 +65,7 @@ class App extends React.Component {
         <Electricity electricityEstimate={this.getElectricityEstimate} />
         <FuelCombustion fuelSourceEstimate={this.getFuelSourceEstimate} />
         <Shipping shippingEstimate={this.getShippingEstimate} />
+        <Flight flightEstimate={this.getFlightEstimate} />
       </div>
     );
   }

@@ -35,16 +35,14 @@ class Info extends React.Component {
           We hope to provide valuable information to assist you in any which way.
         </p>
         <h3>Features</h3>
-        <p>
+        <div>
           Our application allows for the computation of estimates associated with:
-          <ul>
-            <li>Electricity</li>
-            <li>Flights</li>
-            <li>Vehicles</li>
-            <li>Fuel Combustion</li>
-            <li>Shipping</li>
-          </ul>
-        </p>
+          <div>Electricity</div>
+          <div>Flights</div>
+          <div>Vehicles</div>
+          <div>Fuel Combustion</div>
+          <div>Shipping</div>
+        </div>
       </div>
     );
   }
