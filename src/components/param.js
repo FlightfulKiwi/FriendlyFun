@@ -124,6 +124,122 @@ const fuelSources = {
 };
 const fuelSourcesNames = Object.keys(fuelSources);
 
+/* ----- Params for Vehicle Make ----- */
+// const vehicleMakesAndCarbonInterfaceID = {
+//   Toyota: '2b1d0cd5-59be-4010-83b3-b60c5e5342da',
+//   Volkswagen: '86e1e7df-57c2-4753-9f7f-c1a2a1529942',
+//   BMW: 'de66a011-eafe-4191-aee7-5c01b894e905',
+//   Chevrolet: 'ec2508b8-627e-418d-9813-c52d28061be4',
+//   Nissan: 'bf111d61-70c6-476f-bf45-9bad9e526d4c',
+//   Hyundai: 'ad02f9ae-6400-4ec2-81bc-a09e02a2ae32',
+//   'Mercedes-Benz': 'eaca7ef3-19e0-47f5-84d8-bb78c6bde5d2',
+//   Honda: 'd1e97443-32f4-4d98-b2d1-8bf5928da984',
+//   Hummer: 'fdeb92d5-d8a4-48dc-8c5e-1ef168236b01',
+//   Tesla: 'db5875e5-4986-44c5-aabc-02bbfa78c282',
+// };
+
+const vehicleMakes = [
+  'Toyota', 'Volkswagen', 'BMW', 'Chevrolet', 'Nissan', 'Hyundai', 'Mercedes-Benz', 'Honda', 'Hummer', 'Tesla',
+];
+
+const vehicleMakesAndModels = {
+  Toyota: {
+    '4Runner 4WD': 'f2df2fc2-b593-4adb-aace-094710400e95',
+    Avalon: '6c7e7e88-36a5-4de0-afdd-6ac723209ce0',
+    Camry: '7176d739-bae7-486e-a450-677350ecbdd7',
+    Corolla: '55a2a50b-cc69-4de3-a413-34ca2977e4a6',
+    'Corolla Hybrid': 'd4100062-de61-43d1-846b-ff3c6427c2bc',
+    'GR Supra': 'f2451f91-b50c-42c1-bc81-e41a32e7d9af',
+    Prius: '6df87261-0c98-47c0-a7ab-08afc6394f76',
+    'Tundra 4WD': 'ee56522e-6279-4503-afeb-ee92911f9206',
+  },
+  Volkswagen: {
+    Arteon: '9b4ef04f-becc-480c-8cdf-877eb55e7491',
+    Atlas: '57ef86cb-a7c3-4e98-b0ec-e73e46d06026',
+    'e-Golf': '063bc810-a2b8-4f6e-9521-e9157f6bfe22',
+    Golf: '458bc9c2-bf77-4c96-bc3e-e62b360730ed',
+    GTI: 'c9e3b56e-2ce0-45cd-84f5-3ebe54984729',
+    Jetta: '797b8551-1099-49cd-be85-3ad5bba94fec',
+    Passat: '2bc46fbb-554e-46f8-9041-e593871ed737',
+    Tiguan: 'bd073fe2-ed54-49b4-9708-2cbd52a3d198',
+  },
+  BMW: {
+    '230i Coupe': 'd9709988-de69-4870-8536-36150cde64eb',
+    '330i': '1363a46a-46b6-4e41-a047-a5ebfbb8b8d8',
+    i3: '08e9c5ea-cf7d-4802-83ab-daea215ee241',
+    'I8 Coupe': 'ce362125-296d-418f-af09-55030fb6e0e1',
+    'M4 Coupe': '25a2a2f3-0450-41a2-a421-4a465bde7dcc',
+    M5: '59b3bafb-68c1-43dd-83f5-2dde7ab0a937',
+    'M8 Coupe': '7d6dfb5c-667b-406a-b718-3c45b4815d23',
+    'X4 M': '8b235002-7062-4b59-ba80-6df5b5fb0897',
+  },
+  Chevrolet: {
+    'Bolt EV': '3061f3cb-863d-49d5-a2d0-985d521cbb24',
+    Camaro: '366179e8-2b87-4628-a599-819f7232a524',
+    Corvette: '42729b54-581a-4525-b2e2-2833c6659a6c',
+    Impala: 'fab9e926-b823-48ab-8abb-d9f1362b6b8c',
+    Malibu: '8f8f979c-a97c-4fee-8159-acc7d76548d9',
+    'Silverado 4WD': 'c2be24a4-72af-4974-98d6-d75e5190290b',
+    'Suburban K1500 4WD': '99f0bd5b-73d9-43ea-bf2c-94ee82311055',
+    'Tahoe K1500 4WD': 'f364ba10-9957-482c-80c1-525fa4d886ab',
+  },
+  Nissan: {
+    Altima: '0db03780-9156-4a3a-bbaf-0f9ee559d37a',
+    'GT-R': 'f5d5c856-2fec-497c-8763-f06f95ef515a',
+    Maxima: 'f2d2279b-4583-418c-9607-8c9c58921124',
+    'Leaf (62 kW-hr)': '6cc11569-b44c-4b0c-b479-32122239ab4d',
+    'Pathfinder 4WD': '94311d6b-0689-4c72-acbf-dfcaa03da540',
+    'Rogue Sport': '81a60a6f-964e-40c3-9f6d-5f06cf50e5d2',
+    Sentra: 'fb5fff70-b451-469e-9fa3-47c5242f4816',
+    Versa: '089b5acb-81f5-47e7-9cd4-85fc4b10a615',
+  },
+  Hyundai: {
+    Accent: '8ae57077-69cc-4b21-ac74-d1c48d5195c3',
+    Elantra: '7de29217-40e5-4734-bc75-36605e0b16ab',
+    Ioniq: '5e0b6376-8869-4fb6-be47-c375ed7f62bf',
+    'Kona Electric': '0b75ac10-1e8f-4584-b108-c0199fa4db02',
+    'Santa Fe AWD': '19cd88ed-427e-4fe9-93c0-4eee329b8212',
+    Sonata: 'a664b48c-c8cf-4cec-931a-a8285505bda3',
+    'Tucson AWD': 'd8063204-0c92-465e-a036-8079199eaa7c',
+    Veloster: '637504fc-a5c1-4be5-a85c-dbbf0ad3c19d',
+  },
+  'Mercedes-Benz': {
+    'AMG S65': 'f8251144-6d87-49c2-b68d-3f51d825ab83',
+    'AMG G63': '746149fa-a917-47c4-b6b7-5ddc92bbc026',
+    C300: '890058d2-c451-4743-8aaa-95f489ff84b9',
+    E350: 'ac07a3db-2271-4d62-8c42-2ac742a1b4fb',
+    G550: '58f41c5d-a753-4118-9273-81e784125cf7',
+    GLE350: '1abdad1a-061d-4917-83c7-ed4557ac3447',
+    S450: '81227ac5-6ce1-492d-985f-cc169f58e5a2',
+    SL550: 'f586b4b1-e610-42de-be5f-d440147babf9',
+  },
+  Honda: {
+    Accord: 'ab0c8dc3-c240-4036-8f9a-2cb235b7ba57',
+    'Civic 4Dr': '4cd1b4d4-78a4-4656-b6df-92bf7bcb4960',
+    'CR-V AWD': '7a5c7a7d-2996-40b4-95c5-7dd9a0dce98d',
+    Fit: 'f4e1a00d-e4fa-4acc-9223-16cf44e0d68a',
+    'HR-V AWD': 'c6226c60-d50d-45d6-b163-b34b76e609f0',
+    Insight: '71437508-1aed-4df2-82d1-4b60b29dd8a4',
+    Odyssey: '184fd6ff-a66f-4c06-bccf-0b140b2686a8',
+    'Passport AWD': '366d2870-1cf0-4549-86d9-8ca396b31c79',
+  },
+  Hummer: {
+    '2009 H3 4WD': 'ae73f781-a3ff-45e2-ba4d-d0385bcf6f89',
+    '2010 H3 4WD': 'a043eef4-01fc-4356-95d4-3d917d2a4d65',
+    '2010 H3T 4WD': 'e32752a7-146f-4f19-a076-4db49bfca49f',
+  },
+  Tesla: {
+    'Model 3 Long Range': '381a7f07-ffc2-4152-bed3-f88be1d6f781',
+    'Model 3 Mid Range': '9efe7f4e-7556-4649-94c3-6e40ca99c749',
+    'Model 3 Standard Range': 'a3d76dcc-3173-4714-bf79-17eec5b888d1',
+    'Model S Long Range': 'ec3f4820-fe8e-468d-a1c2-52f9c9893b20',
+    'Model S Standard Range': 'ce45e923-cdc6-4d02-9a1f-2e7df42dbbd2',
+    'Model X Long Range': '62575ca6-865c-42a9-8a16-a669db7d6e2f',
+    'Model X Standard Range': '9ee0b073-712b-4b5b-b9ad-c0e872a86cdc',
+    'Model Y Performance AWD': '89f885e6-2016-4080-ad39-3396cd559f60',
+  },
+};
+
 /* ----- Export of params ----- */
 module.exports = {
   geoCoverageEurope,
@@ -137,4 +253,6 @@ module.exports = {
   provinceCodesCanada,
   provinceCodesCanadaCodes,
   provinceCodesCanadaNames,
+  vehicleMakesAndModels,
+  vehicleMakes,
 };

@@ -10,12 +10,14 @@ class Electricity extends React.Component {
       continent: '',
       country: '',
       state: '',
+      estimateVisible: false,
     };
     this.onContinentSelect = this.onContinentSelect.bind(this);
     this.onUnitSelect = this.onUnitSelect.bind(this);
     this.onCountrySelect = this.onCountrySelect.bind(this);
     this.onStateSelect = this.onStateSelect.bind(this);
     this.onComputeClick = this.onComputeClick.bind(this);
+    this.closeEstimate = this.closeEstimate.bind(this);
   }
 
   onContinentSelect(e) {
@@ -38,12 +40,19 @@ class Electricity extends React.Component {
     this.setState({ state: e.target.value });
   }
 
-  onComputeClick(e) {
+  async onComputeClick(e) {
     e.preventDefault();
-    const { unit, country, state } = this.state;
+
+    await this.setState({
+      amount: Number(document.getElementById('electricity-value').value),
+    });
+
+    const {
+      unit, country, state, amount,
+    } = this.state;
     const electricityURL = {
       unit,
-      value: document.getElementById('electricity-value').value,
+      value: amount,
       country,
       state,
     };
@@ -51,19 +60,28 @@ class Electricity extends React.Component {
     const { electricityEstimate } = this.props;
     electricityEstimate(electricityURL);
 
+    this.setState({ estimateVisible: true });
+  }
+
+  closeEstimate(e) {
+    e.preventDefault();
+
     document.getElementById('electricity-value').value = '';
     this.setState({
+      amount: '',
       unit: 'mwh',
       continent: '',
       country: '',
       state: '',
+      estimateVisible: false,
     });
   }
 
   render() {
     const {
-      unit, continent, country, state,
+      unit, continent, country, state, estimateVisible, amount,
     } = this.state;
+    const { carbonKg, carbonLb } = this.props;
 
     return (
       <div id="electricity">
@@ -72,12 +90,13 @@ class Electricity extends React.Component {
         <label htmlFor="electricity-value">
           Value
           <sup className="reqd-indicator">*</sup>
-          :
+          :&nbsp;&nbsp;
           <input type="number" id="electricity-value" required />
         </label>
+        &nbsp;&nbsp;
 
         <label htmlFor="electricity-unit">
-          Unit:
+          Unit:&nbsp;&nbsp;
           <select
             id="electricity-unit"
             value={unit}
@@ -86,12 +105,13 @@ class Electricity extends React.Component {
             <option value="mwh">MWh</option>
             <option value="kwh">kWh</option>
           </select>
+          &nbsp;&nbsp;
         </label>
 
         <label htmlFor="electricity-continent">
           Continent
           <sup className="reqd-indicator">*</sup>
-          :
+          :&nbsp;&nbsp;
           <select
             id="electricity-continent"
             value={continent}
@@ -102,12 +122,13 @@ class Electricity extends React.Component {
             <option value="north-america">North America</option>
             <option value="europe">Europe</option>
           </select>
+          &nbsp;&nbsp;
         </label>
 
         <label htmlFor="electrictiy-country">
           Country
           <sup className="reqd-indicator">*</sup>
-          :
+          :&nbsp;&nbsp;
           {
             continent === 'north-america'
               ? (
@@ -146,15 +167,14 @@ class Electricity extends React.Component {
                 </select>
               )
           }
+          &nbsp;&nbsp;
         </label>
 
-        {/* <label htmlFor="electricity-state">
-          State/Province */}
         {
           continent === 'north-america'
           && (
             <label htmlFor="electricity-state">
-              State/Province
+              State/Province:&nbsp;&nbsp;
               {
                 country === 'us'
                   ? (
@@ -194,15 +214,45 @@ class Electricity extends React.Component {
                     </select>
                   )
               }
+              &nbsp;&nbsp;
             </label>
           )
         }
 
         <div className="btn electricity-button">
           <button type="submit" onClick={this.onComputeClick}>
-            Compute Estimate
+            Estimate
           </button>
         </div>
+
+        {estimateVisible
+          && (
+          <div className="show-estimate-text">
+            <p>
+              Consumption of&nbsp;
+              {amount}
+              {unit}
+              &nbsp;of electricity equates to the emission of approximately
+            </p>
+            <div className="show-carbon">
+              <div>
+                {carbonKg}
+                &nbsp;kilograms of carbon dioxide equivalent
+              </div>
+              <div>
+                {carbonLb}
+                &nbsp;pounds of carbon dioxide equivalent
+              </div>
+            </div>
+            <button
+              type="button"
+              className="btn close-button"
+              onClick={this.closeEstimate}
+            >
+              Close
+            </button>
+          </div>
+          )}
       </div>
     );
   }
@@ -210,6 +260,8 @@ class Electricity extends React.Component {
 
 Electricity.propTypes = {
   electricityEstimate: PropTypes.func.isRequired,
+  carbonLb: PropTypes.number.isRequired,
+  carbonKg: PropTypes.number.isRequired,
 };
 
 export default Electricity;

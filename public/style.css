@@ -1,0 +1,85 @@
+body {
+  text-align: center;
+  background-image: linear-gradient(#faf9f6 55%, #e9ffdb);
+  /* background-color: #faf9f6; */
+  margin: 5% 2.5%;
+}
+
+.intro-container {
+  width: 50%;
+  margin: 3% auto;
+}
+
+.features-container {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 3%;
+  margin: 2.5%;
+  flex-wrap: wrap;
+}
+.features {
+  flex: 1 1 0px;
+  border: 1px solid #8b9090;
+  border-radius: 6%;
+  padding: 0.5%;
+  /* text-align: left; */
+}
+.features-ve {
+  background-color: #ffcccb;
+}
+.features-fl {
+  background-color: #a3daf0;
+}
+.features-el {
+  background-color: #F1E5AC;
+}
+.features-sh {
+  background-color: #def3f6;
+}
+.features-fc {
+  background-color: #eca589;
+}
+
+.estimates-container {
+  width: 60%;
+  margin: 3% auto;
+}
+/* label {
+  margin: 2% 2%;
+} */
+#section-title {
+  font-weight: bold;
+}
+.btn {
+  margin: 2% auto;
+}
+button {
+  padding: 0.5% 1.5%;
+  font-size: 1rem;
+}
+#vehicle {
+  border: 1px solid #8b9090;
+  background-color: #ffcccb;
+  margin: 3% 0;
+}
+#flight {
+  border: 1px solid #8b9090;
+  background-color: #a3daf0;
+  margin: 3% 0;
+}
+#electricity {
+  border: 1px solid #8b9090;
+  background-color: #F1E5AC;
+  margin: 3% 0;
+}
+#shipping {
+  border: 1px solid #8b9090;
+  background-color: #def3f6;
+  margin: 3% 0;
+}
+#fuel-source {
+  border: 1px solid #8b9090;
+  background-color: #eca589;
+  margin: 3% 0;
+}

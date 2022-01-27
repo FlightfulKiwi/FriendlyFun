@@ -10,15 +10,16 @@ pool.connect((err) => {
 pool.connect();
 
 module.exports.getAirportDetails = async (req, res) => {
-  const { choice, cityOrCode, continent } = req.body;
+  const { cityOrCode, destination, continent } = req.query;
   const table = continent === 'Europe' ? 'airports_europe' : 'airports_north_america';
-  const column = choice === 'city' ? 'city' : 'code';
-  const getQuery = `SELECT (code) FROM ${table}
-    WHERE ${column} LIKE '%${cityOrCode}%' LIMIT 1`;
+  const getQuery = `SELECT
+    JSON_BUILD_OBJECT('code', code, 'city', city) AS result
+    FROM ${table}
+    WHERE ${cityOrCode} LIKE '%${destination}%' LIMIT 1`;
 
   try {
     const result = await pool.query(getQuery);
-    res.send(result.rows);
+    res.send(result.rows[0].result);
   } catch (err) {
     res.send(err);
   }

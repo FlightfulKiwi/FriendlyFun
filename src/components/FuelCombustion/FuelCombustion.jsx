@@ -37,7 +37,7 @@ class FuelCombustion extends React.Component {
     const fuelSourceURL = {
       type,
       unit,
-      value: document.getElementById('fuel-source-value').value,
+      value: Number(document.getElementById('fuel-source-value').value),
     };
 
     const { fuelSourceEstimate } = this.props;
@@ -57,13 +57,14 @@ class FuelCombustion extends React.Component {
         <label htmlFor="fuel-source-type">
           Fuel Source Type
           <sup className="reqd-indicator">*</sup>
-          :
+          :&nbsp;&nbsp;
           <select
             id="fuel-source-type"
             value={type}
             onChange={this.onTypeSelect}
             required
           >
+            <option value="" disabled>Choose Fuel Source</option>
             {
               param.fuelSourcesNames.map((name, i) => {
                 const k = 2 * i;
@@ -75,19 +76,21 @@ class FuelCombustion extends React.Component {
               })
             }
           </select>
+          &nbsp;&nbsp;
         </label>
 
         <label htmlFor="fuel-source-value">
           Fuel Source Value
           <sup className="reqd-indicator">*</sup>
-          :
+          :&nbsp;&nbsp;
           <input type="number" id="fuel-source-value" required />
         </label>
+        &nbsp;&nbsp;
 
         <label htmlFor="fuel-source-unit">
           Fuel Source Unit
           <sup className="reqd-indicator">*</sup>
-          :
+          :&nbsp;&nbsp;
           <select
             id="fuel-source-unit"
             value={unit}
@@ -105,11 +108,12 @@ class FuelCombustion extends React.Component {
               })
             }
           </select>
+          &nbsp;&nbsp;
         </label>
 
         <div className="btn fuel-source-button">
           <button type="button" onClick={this.onComputeClick}>
-            Compute Estimate
+            Estimate
           </button>
         </div>
       </div>
